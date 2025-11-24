@@ -1,19 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 250">
   <defs>
-    <!-- Gradient pour le ciel style Ghibli -->
     <linearGradient id="sky" x1="0%" y1="0%" x2="0%" y2="100%">
       <stop offset="0%" style="stop-color:#1a1a2e"/>
       <stop offset="50%" style="stop-color:#16213e"/>
       <stop offset="100%" style="stop-color:#0f3460"/>
     </linearGradient>
     
-    <!-- Gradient forêt -->
-    <linearGradient id="forest" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" style="stop-color:#2d5a27"/>
-      <stop offset="100%" style="stop-color:#1e3d19"/>
-    </linearGradient>
-    
-    <!-- Lueur des kodamas -->
     <filter id="glow">
       <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
       <feMerge>
@@ -40,10 +32,6 @@
       0%, 100% { opacity: 0.3; }
       50% { opacity: 1; }
     }
-    @keyframes sway {
-      0%, 100% { transform: rotate(-2deg); }
-      50% { transform: rotate(2deg); }
-    }
     @keyframes kodama {
       0%, 100% { opacity: 0.6; transform: translateY(0); }
       50% { opacity: 1; transform: translateY(-5px); }
@@ -52,18 +40,15 @@
       0%, 100% { opacity: 0; }
       50% { opacity: 1; }
     }
+    @keyframes logoGlow {
+      0%, 100% { opacity: 0.85; }
+      50% { opacity: 1; }
+    }
     .star { animation: twinkle 3s ease-in-out infinite; }
-    .star:nth-child(2) { animation-delay: 0.5s; }
-    .star:nth-child(3) { animation-delay: 1s; }
-    .star:nth-child(4) { animation-delay: 1.5s; }
     .kodama { animation: kodama 4s ease-in-out infinite; }
-    .kodama:nth-child(2) { animation-delay: 1s; }
-    .kodama:nth-child(3) { animation-delay: 2s; }
     .firefly { animation: firefly 2s ease-in-out infinite; }
     .title { animation: float 6s ease-in-out infinite; }
-    .tree { transform-origin: bottom center; animation: sway 8s ease-in-out infinite; }
-    .tree:nth-child(2) { animation-delay: 1s; }
-    .tree:nth-child(3) { animation-delay: 2s; }
+    .logo { animation: logoGlow 4s ease-in-out infinite; }
   </style>
   
   <!-- Fond ciel -->
@@ -72,20 +57,26 @@
   <!-- Étoiles -->
   <g class="stars">
     <circle class="star" cx="50" cy="30" r="1.5" fill="#fff" opacity="0.8"/>
-    <circle class="star" cx="150" cy="50" r="1" fill="#fff" opacity="0.6"/>
-    <circle class="star" cx="250" cy="25" r="1.5" fill="#fff" opacity="0.7"/>
-    <circle class="star" cx="350" cy="45" r="1" fill="#fff" opacity="0.5"/>
-    <circle class="star" cx="450" cy="20" r="1.5" fill="#fff" opacity="0.8"/>
-    <circle class="star" cx="550" cy="55" r="1" fill="#fff" opacity="0.6"/>
-    <circle class="star" cx="650" cy="35" r="1.5" fill="#fff" opacity="0.7"/>
-    <circle class="star" cx="750" cy="40" r="1" fill="#fff" opacity="0.5"/>
-    <circle class="star" cx="100" cy="60" r="0.8" fill="#fff" opacity="0.4"/>
-    <circle class="star" cx="700" cy="25" r="0.8" fill="#fff" opacity="0.4"/>
+    <circle class="star" cx="150" cy="50" r="1" fill="#fff" opacity="0.6" style="animation-delay: 0.5s"/>
+    <circle class="star" cx="250" cy="25" r="1.5" fill="#fff" opacity="0.7" style="animation-delay: 1s"/>
+    <circle class="star" cx="350" cy="45" r="1" fill="#fff" opacity="0.5" style="animation-delay: 1.5s"/>
+    <circle class="star" cx="450" cy="20" r="1.5" fill="#fff" opacity="0.8" style="animation-delay: 0.3s"/>
+    <circle class="star" cx="550" cy="55" r="1" fill="#fff" opacity="0.6" style="animation-delay: 0.8s"/>
+    <circle class="star" cx="750" cy="40" r="1" fill="#fff" opacity="0.5" style="animation-delay: 1.2s"/>
+    <circle class="star" cx="100" cy="60" r="0.8" fill="#fff" opacity="0.4" style="animation-delay: 2s"/>
   </g>
   
-  <!-- Lune -->
-  <circle cx="680" cy="60" r="25" fill="#f4e4ba" opacity="0.9" filter="url(#softGlow)"/>
-  <circle cx="690" cy="55" r="25" fill="url(#sky)"/>
+  <!-- Ida Logo -->
+  <g class="logo" transform="translate(630, 15) scale(0.7)" filter="url(#softGlow)">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M70.1857 21.6719H45.3622C45.3484 21.6719 45.3449 21.6909 45.357 21.696C50.7719 23.9869 54.6067 29.6744 54.6067 36.3297C54.6067 42.9849 50.9703 48.374 45.7796 50.7753C45.7676 50.7805 45.771 50.7994 45.7848 50.7994H70.3668C78.447 50.7994 84.9901 44.2184 84.9315 36.1244C84.8711 28.0943 78.2158 21.6702 70.184 21.6702L70.1857 21.6719Z" fill="#D72D5D"/>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M38.3846 21.6719H30.5218V21.6753C30.4821 21.6753 30.4424 21.6719 30.4045 21.6719C22.3606 21.6719 15.8398 28.1926 15.8398 36.2365C15.8398 44.2804 22.3606 50.8012 30.4045 50.8012C30.4442 50.8012 30.4838 50.7977 30.5218 50.7977V50.8012H38.3846C46.4285 50.8012 52.9492 44.2804 52.9492 36.2365C52.9492 28.1926 46.4285 21.6719 38.3846 21.6719Z" fill="#D72D5D"/>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M46.6221 97.0928C46.6221 90.4048 50.4949 84.6931 55.9529 82.4247C55.9668 82.4195 55.9616 82.4005 55.9478 82.4005H30.348V82.404C30.3083 82.404 30.2686 82.4005 30.2307 82.4005C22.1867 82.4005 15.666 88.9212 15.666 96.9652C15.666 105.009 22.1867 111.53 30.2307 111.53C30.2703 111.53 30.31 111.526 30.348 111.526V111.53H55.4285C50.2482 109.12 46.6221 103.563 46.6221 97.0928Z" fill="#D72D5D"/>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M70.5415 82.4005H62.9064C54.8625 82.4005 48.3418 88.9212 48.3418 96.9652C48.3418 105.009 54.8625 111.53 62.9064 111.53H70.5415C78.5855 111.53 85.1062 105.009 85.1062 96.9652C85.1062 88.9212 78.5855 82.4005 70.5415 82.4005Z" fill="#D72D5D"/>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M30.4045 66.7114C30.4045 60.1786 34.1013 54.5756 39.361 52.2071V52.1467H14.7479C6.71778 52.1467 0.0607914 58.5708 0.000414512 66.601C-0.0599624 74.6949 6.48317 81.276 14.5651 81.276H39.4352C39.449 81.276 39.4524 81.257 39.4403 81.2519C34.1375 78.9023 30.4045 73.2787 30.4045 66.7114Z" fill="#D72D5D"/>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M86.1169 52.1467H61.4072V52.1761C66.7049 54.5273 70.4344 60.1493 70.4344 66.7114C70.4344 73.2735 66.7049 78.8954 61.4072 81.2467V81.276H86.2998C94.3799 81.276 100.923 74.6949 100.864 66.601C100.804 58.5708 94.1488 52.1467 86.1169 52.1467Z" fill="#D72D5D"/>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M54.2105 52.1467H46.6271C38.5832 52.1467 32.0625 58.6674 32.0625 66.7114C32.0625 74.7553 38.5832 81.276 46.6271 81.276H54.2105C62.2544 81.276 68.7751 74.7553 68.7751 66.7114C68.7751 58.6674 62.2544 52.1467 54.2105 52.1467Z" fill="#D72D5D"/>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M69.8068 0.0311313C69.9707 11.194 64.5488 17.3386 55.8752 19.7278C53.2204 20.4592 48.3919 21.113 45.2472 20.2315C45.0471 4.82851 54.7971 -0.474311 69.8068 0.0328554V0.0311313Z" fill="#149D44"/>
+  </g>
   
   <!-- Montagnes lointaines -->
   <path d="M0 180 Q100 120 200 160 Q300 100 400 150 Q500 90 600 140 Q700 100 800 160 L800 250 L0 250 Z" fill="#1e3d19" opacity="0.5"/>
@@ -93,18 +84,10 @@
   <!-- Forêt arrière-plan -->
   <path d="M0 200 Q50 160 100 190 Q150 150 200 185 Q250 140 300 180 Q350 130 400 175 Q450 145 500 185 Q550 135 600 175 Q650 150 700 190 Q750 155 800 195 L800 250 L0 250 Z" fill="#2d5a27" opacity="0.7"/>
   
-  <!-- Arbres stylisés -->
-  <g class="tree">
-    <path d="M80 250 L80 200 M80 210 Q60 190 80 180 M80 195 Q100 175 80 165" stroke="#1a4d1a" stroke-width="3" fill="none"/>
-  </g>
-  <g class="tree" style="animation-delay: 0.5s">
-    <path d="M720 250 L720 190 M720 200 Q695 175 720 160 M720 180 Q745 155 720 140" stroke="#1a4d1a" stroke-width="3" fill="none"/>
-  </g>
-  
   <!-- Sol de la forêt -->
   <path d="M0 220 Q200 210 400 225 Q600 215 800 220 L800 250 L0 250 Z" fill="#1e3d19"/>
   
-  <!-- Kodamas (esprits de la forêt) -->
+  <!-- Kodamas -->
   <g class="kodama" filter="url(#glow)">
     <ellipse cx="120" cy="215" rx="6" ry="8" fill="#e8f4e8" opacity="0.8"/>
     <circle cx="118" cy="212" r="1.5" fill="#2d5a27"/>
@@ -122,21 +105,18 @@
   </g>
   
   <!-- Lucioles -->
-  <circle class="firefly" cx="150" cy="180" r="2" fill="#a8e6cf" filter="url(#glow)" style="animation-delay: 0s"/>
+  <circle class="firefly" cx="150" cy="180" r="2" fill="#a8e6cf" filter="url(#glow)"/>
   <circle class="firefly" cx="300" cy="160" r="1.5" fill="#a8e6cf" filter="url(#glow)" style="animation-delay: 0.7s"/>
   <circle class="firefly" cx="500" cy="175" r="2" fill="#a8e6cf" filter="url(#glow)" style="animation-delay: 1.4s"/>
-  <circle class="firefly" cx="650" cy="155" r="1.5" fill="#a8e6cf" filter="url(#glow)" style="animation-delay: 2.1s"/>
+  <circle class="firefly" cx="600" cy="155" r="1.5" fill="#a8e6cf" filter="url(#glow)" style="animation-delay: 2.1s"/>
   <circle class="firefly" cx="400" cy="145" r="1.8" fill="#a8e6cf" filter="url(#glow)" style="animation-delay: 0.3s"/>
   
   <!-- Texte principal -->
   <g class="title">
-    <text x="400" y="100" text-anchor="middle" font-family="Georgia, serif" font-size="42" font-weight="bold" fill="#e8f4e8" filter="url(#softGlow)">
+    <text x="400" y="115" text-anchor="middle" font-family="Georgia, serif" font-size="42" font-weight="bold" fill="#e8f4e8" filter="url(#softGlow)">
       Mathieu Grosso
     </text>
-    <text x="400" y="135" text-anchor="middle" font-family="Georgia, serif" font-size="18" fill="#a8e6cf" opacity="0.9">
-      Co-founder &amp; CTO @ Ida
-    </text>
-    <text x="400" y="160" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#7fbc8c" opacity="0.8">
+    <text x="400" y="155" text-anchor="middle" font-family="Georgia, serif" font-size="18" fill="#a8e6cf" opacity="0.9">
       Building AI for sustainable supply chains 🌿
     </text>
   </g>
